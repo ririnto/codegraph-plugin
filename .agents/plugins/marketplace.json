@@ -1,0 +1,20 @@
+{
+  "interface": {
+    "displayName": "CodeGraph MCP"
+  },
+  "name": "codegraph-plugin",
+  "plugins": [
+    {
+      "category": "Development",
+      "name": "codegraph-plugin",
+      "policy": {
+        "authentication": "ON_INSTALL",
+        "installation": "AVAILABLE"
+      },
+      "source": {
+        "path": "./",
+        "source": "local"
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "description": "Self-marketplace catalog for the codegraph-plugin repository.",
+  "name": "codegraph-plugin",
+  "owner": {
+    "name": "ririnto"
+  },
+  "plugins": [
+    {
+      "author": {
+        "name": "ririnto"
+      },
+      "category": "development",
+      "description": "CodeGraph MCP tools and automatic repository preparation.",
+      "homepage": "https://github.com/ririnto/codegraph-plugin",
+      "keywords": ["codegraph", "code-intelligence", "mcp", "indexing"],
+      "license": "MIT",
+      "name": "codegraph-plugin",
+      "repository": "https://github.com/ririnto/codegraph-plugin",
+      "source": "./"
+    }
+  ]
+}

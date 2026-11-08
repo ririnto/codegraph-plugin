@@ -1,0 +1,44 @@
+{
+  "name": "@ririnto/codegraph-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CodeGraph MCP tools and automatic repository preparation for Claude Code and Codex.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "check": "run-p check:*",
+    "check:markdown-rules": "node --test tests/markdown-rules.test.mjs",
+    "check:plugin-tests": "vitest run tests/runtime.test.ts && node --test tests/plugin.test.mjs",
+    "check:issue-forms": "node release/check-issue-forms.mjs",
+    "check:plugin-version": "node release/check-plugin-version.mjs",
+    "check:markdownlint-cli2": "markdownlint-cli2",
+    "check:ultracite": "ultracite check --type-aware",
+    "fix": "run-p fix:*",
+    "fix:markdownlint-cli2": "markdownlint-cli2 --fix",
+    "fix:ultracite": "ultracite fix",
+    "pre-commit": "run-s check",
+    "pre-push": "run-s check",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "execa": "catalog:",
+    "husky": "catalog:",
+    "js-yaml": "catalog:",
+    "markdownlint": "catalog:",
+    "markdownlint-cli2": "catalog:",
+    "markdownlint-rule-relative-links": "catalog:",
+    "npm-run-all2": "catalog:",
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:",
+    "oxlint-tsgolint": "catalog:",
+    "typescript": "catalog:",
+    "ultracite": "catalog:",
+    "vitest": "catalog:",
+    "zod": "catalog:"
+  },
+  "engines": {
+    "node": ">=26.13.0 <27"
+  },
+  "packageManager": "pnpm@12.16.1"
+}

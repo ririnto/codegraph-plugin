@@ -1,0 +1,13 @@
+{
+  "name": "codegraph-plugin",
+  "version": "2026.11.08.01",
+  "description": "CodeGraph indexing and MCP access for engineering repositories.",
+  "author": {
+    "name": "ririnto"
+  },
+  "license": "MIT",
+  "mcpServers": "./.codex-plugin/mcp.json",
+  "hooks": "./hooks/codex-hooks.json",
+  "homepage": "https://github.com/ririnto/codegraph-plugin",
+  "repository": "https://github.com/ririnto/codegraph-plugin"
+}
