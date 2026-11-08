@@ -9,7 +9,7 @@ catalog:
   markdownlint-cli2: ^0.24.0
   markdownlint-rule-relative-links: ^5.1.4
   npm-run-all2: ^9.0.4
-  oxfmt: ^0.75.0
+  oxfmt: ^0.76.0
   oxlint: ^1.90.0
   oxlint-tsgolint: ^7.0.2005
   typescript: ^7.0.2
