@@ -71,11 +71,11 @@ Git lookup failures are logged, and the simplified preparation command can conti
 
 ## Install And Use
 
-Install the plugin from this repository's marketplace in Claude Code:
+Install the plugin from the sinon marketplace in Claude Code:
 
 ```sh
-claude plugin marketplace add ririnto/codegraph-plugin
-claude plugin install codegraph-plugin@codegraph-plugin
+claude plugin marketplace add ririnto/sinon
+claude plugin install codegraph-plugin@sinon
 ```
 
 For local development, load the package in a new session:
@@ -84,7 +84,7 @@ For local development, load the package in a new session:
 claude --plugin-dir .
 ```
 
-In Codex, install CodeGraph from this repository's marketplace and trust its startup hook.
+In Codex, install CodeGraph from the sinon marketplace and trust its startup hook.
 Start a new session after installation.
 Codex uses startup preparation, while Claude Code also prepares a repository after `EnterWorktree`.
 
