@@ -25,7 +25,7 @@
     }
   },
   "customRules": [
-    "./rules/no-box-drawing.ts",
+    "rules/no-box-drawing.ts",
     "markdownlint-rule-relative-links"
   ],
   "gitignore": true,
