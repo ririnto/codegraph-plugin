@@ -1,6 +1,6 @@
 # Problem
 
-Describe the problem and link the related issue.
+Describe the problem and link the related issue when one exists.
 Use a closing reference only when this change satisfies the issue's acceptance criteria.
 
 ## Changes
