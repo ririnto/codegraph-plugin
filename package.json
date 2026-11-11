@@ -7,8 +7,9 @@
   "type": "module",
   "scripts": {
     "check": "run-p check:*",
-    "check:markdown-rules": "node --test tests/markdown-rules.test.mjs",
-    "check:plugin-tests": "vitest run tests/runtime.test.ts && node --test tests/plugin.test.mjs",
+    "check:test": "run-s check:test:*",
+    "check:test:vitest": "vitest run --exclude '**/*.test.mjs'",
+    "check:test:node": "node --test \"**/*.test.mjs\"",
     "check:issue-forms": "node release/check-issue-forms.mjs",
     "check:plugin-version": "node release/check-plugin-version.mjs",
     "check:markdownlint-cli2": "markdownlint-cli2",
