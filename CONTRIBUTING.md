@@ -1,6 +1,7 @@
 # Contributing
 
-Open an issue before changing behavior.
+Issues are optional and are not prerequisites for implementation, pull requests, or integration.
+Record the problem, scope, and acceptance criteria in the task or pull request when no issue is used.
 Keep each pull request a single coherent change.
 
 ## Reproducing document validation
