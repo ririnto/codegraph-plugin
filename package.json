@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "check": "run-p check:*",
-    "check:test": "run-s check:test:*",
+    "check:test": "run-p check:test:*",
     "check:test:vitest": "vitest run --exclude '**/*.test.mjs'",
     "check:test:node": "node --test \"**/*.test.mjs\"",
     "check:issue-forms": "node release/check-issue-forms.mjs",
