@@ -11,7 +11,7 @@ pnpm install --frozen-lockfile
 pnpm run check
 ```
 
-`pnpm run check` runs the manifest tests, issue-form validation, plugin version validation, Markdown lint, and type-aware lint.
+`pnpm run check` runs the manifest tests, issue-form validation, plugin version validation, Markdown lint, TypeScript checks, and type-aware lint.
 Run `pnpm run fix` when supported formatting repairs are needed.
 
 ## Pull requests
