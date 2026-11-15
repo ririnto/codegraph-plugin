@@ -173,6 +173,9 @@ settings:
 
 catalogs:
   default:
+    '@tsconfig/node-lts':
+      specifier: ^24.0.1
+      version: 24.0.1
     '@types/node':
       specifier: ^24.19.2
       version: 24.19.2
@@ -223,6 +226,9 @@ importers:
 
   .:
     devDependencies:
+      '@tsconfig/node-lts':
+        specifier: 'catalog:'
+        version: 24.0.1
       '@types/node':
         specifier: 'catalog:'
         version: 24.19.2
@@ -721,6 +727,9 @@ packages:
   '@sindresorhus/merge-streams@4.0.0':
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
+
+  '@tsconfig/node-lts@24.0.1':
+    resolution: {integrity: sha512-xo+1KtV5zVb90fyyeglG1n5cqg3cQXLlCkEpLptYlZUNk28xmwhuD5GmxoXwmrVtUTvaMyclun9kAd0TK7H+Pg==}
 
   '@tybys/wasm-util@0.10.4':
     resolution: {integrity: sha512-W3c4gRigFS0T/Ma4qIYF3GDAc5AQdHb1yL5znJT1Zv1YaD9Kitx656wBjvr19qbiosmZT8lWDM5BEMynUqX65A==}
@@ -2021,6 +2030,8 @@ snapshots:
   '@sec-ant/readable-stream@0.4.1': {}
 
   '@sindresorhus/merge-streams@4.0.0': {}
+
+  '@tsconfig/node-lts@24.0.1': {}
 
   '@tybys/wasm-util@0.10.4':
     dependencies:

@@ -1,20 +1,10 @@
 {
+  "extends": "@tsconfig/node-lts/tsconfig.json",
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "allowJs": true,
     "checkJs": true,
-    "module": "NodeNext",
-    "noEmit": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "ES2024",
-    "types": ["node"]
+    "noEmit": true
   },
-  "include": [
-    "*.ts",
-    "release/**/*.mjs",
-    "rules/**/*.ts",
-    "tests/**/*.mjs",
-    "tests/**/*.ts"
-  ]
+  "include": ["**/*"]
 }
