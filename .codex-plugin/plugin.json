@@ -1,6 +1,6 @@
 {
   "name": "codegraph-plugin",
-  "version": "2026.11.18.02",
+  "version": "2026.11.18.03",
   "description": "CodeGraph indexing and MCP access for engineering repositories.",
   "author": {
     "name": "ririnto"
