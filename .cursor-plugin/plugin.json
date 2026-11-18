@@ -1,7 +1,7 @@
 {
   "name": "codegraph-plugin",
   "displayName": "CodeGraph",
-  "version": "2026.11.20",
+  "version": "2026.11.19.01",
   "description": "Find symbols and trace calls with automatic Git checkout indexing.",
   "author": {
     "name": "ririnto"
@@ -19,6 +19,19 @@
           "timeout": 3600
         }
       ]
+    }
+  },
+  "mcpServers": {
+    "codegraph": {
+      "type": "stdio",
+      "command": "sh",
+      "args": [
+        "-c",
+        "exec npx --yes @colbymchenry/codegraph serve --mcp"
+      ],
+      "env": {
+        "NODE_USE_SYSTEM_CA": "1"
+      }
     }
   }
 }
