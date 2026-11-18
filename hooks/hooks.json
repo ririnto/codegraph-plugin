@@ -7,14 +7,14 @@
         "hooks": [
           {
             "type": "command",
-            "command": "(grep -qxE '[.]codegraph[[:space:]]*' \"$(git rev-parse --git-path info/exclude)\" || { echo; echo .codegraph; } >> \"$(git rev-parse --git-path info/exclude)\") >&2",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/exclude.sh\"",
             "timeout": 3600,
             "statusMessage": "Configuring CodeGraph exclusion for Git checkout root",
             "async": true
           },
           {
             "type": "command",
-            "command": "(cd \"$(git rev-parse --show-toplevel)\" && NODE_USE_SYSTEM_CA=1 npx --yes @colbymchenry/codegraph init --yes) >&2",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/init.sh\"",
             "async": true,
             "timeout": 3600,
             "statusMessage": "Initializing CodeGraph at Git checkout root"
@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "(cd \"$(git rev-parse --show-toplevel)\" && NODE_USE_SYSTEM_CA=1 npx --yes @colbymchenry/codegraph init --yes) >&2",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/init.sh\"",
             "async": true,
             "timeout": 3600,
             "statusMessage": "Initializing CodeGraph at Git checkout root"

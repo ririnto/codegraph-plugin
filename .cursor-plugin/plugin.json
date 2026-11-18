@@ -1,0 +1,24 @@
+{
+  "name": "codegraph-plugin",
+  "displayName": "CodeGraph",
+  "version": "1.0.0",
+  "description": "Find symbols and trace calls with automatic Git checkout indexing.",
+  "author": {
+    "name": "ririnto"
+  },
+  "license": "MIT",
+  "hooks": {
+    "version": 1,
+    "hooks": {
+      "sessionStart": [
+        {
+          "command": "./hooks/exclude.sh \"$CURSOR_PROJECT_DIR\""
+        },
+        {
+          "command": "./hooks/init.sh \"$CURSOR_PROJECT_DIR\"",
+          "timeout": 3600
+        }
+      ]
+    }
+  }
+}

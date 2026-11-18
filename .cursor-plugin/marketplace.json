@@ -1,0 +1,11 @@
+{
+  "name": "codegraph-plugin",
+  "owner": { "name": "ririnto" },
+  "plugins": [
+    {
+      "name": "codegraph-plugin",
+      "source": "./",
+      "description": "Find symbols and trace calls in your Git checkout with CodeGraph."
+    }
+  ]
+}
