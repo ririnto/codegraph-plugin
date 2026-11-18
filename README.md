@@ -1,6 +1,6 @@
 # CodeGraph
 
-Use [CodeGraph](https://github.com/colbymchenry/codegraph) in Claude Code or Codex to find symbols and trace calls in a Git checkout.
+Use [CodeGraph](https://github.com/colbymchenry/codegraph) in Claude Code, Codex, or Cursor to find symbols and trace calls in a Git checkout.
 The plugin runs the upstream MCP server through `npx` and initializes the index when a session starts.
 
 ## Install
@@ -25,12 +25,19 @@ Trust the startup hook in Codex.
 If you already use the `sinon` marketplace, install `codegraph-plugin@sinon` from it instead.
 Start a new session in the repository you want to query.
 
+### Cursor
+
+In **Customize**, choose **From GitHub Repository** and enter `https://github.com/ririnto/codegraph-plugin`.
+Select **CodeGraph**, choose **Install**, then open a new Agent conversation in your Git checkout.
+
+For a local install, clone this repository into `~/.cursor/plugins/local/codegraph-plugin` and run **Developer: Reload Window**.
+
 ## Use the index
 
 Ask your agent to find a symbol or its callers.
 To check indexing progress from the checkout, run `npx --yes @colbymchenry/codegraph status`.
 
-On startup, both hosts run `codegraph init --yes` in the background and add `.codegraph` to Git’s local exclude file.
+On startup, the plugin runs `codegraph init --yes` in the background and adds `.codegraph` to Git’s local exclude file.
 The MCP server keeps the index in sync.
 If file watching is unavailable, initialization can install Git sync hooks.
 Claude Code also initializes each linked worktree on entry.
