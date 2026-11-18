@@ -5,7 +5,7 @@ if [ -z "$workspace" ]; then
   exit 0
 fi
 
-if ! git -C "$workspace" rev-parse --show-toplevel >/dev/null 2>&1; then
+if [ "$(git -C "$workspace" rev-parse --is-inside-work-tree 2>&1)" != "true" ]; then
   exit 0
 fi
 
@@ -20,4 +20,7 @@ fi
 if ! mkdir -p "${exclude%/*}"; then
   exit 1
 fi
-printf '\n.codegraph\n' >> "$exclude"
+{
+  echo
+  echo .codegraph
+} >> "$exclude"

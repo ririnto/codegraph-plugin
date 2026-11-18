@@ -7,6 +7,11 @@ The plugin runs the upstream MCP server through `npx` and initializes the index 
 
 Use Git, a POSIX shell, and npm with Node.js 22.19+ on 22.x or 24.6+ on 24.x for system certificate support.
 
+On native Windows, install Git for Windows and Node.js with npm.
+Make the Git for Windows `bin` directory (usually `C:\Program Files\Git\bin`) available on the user PATH and restart your client.
+From PowerShell, run `sh -c 'git --version && npx --version'` to check the PATH that the plugin needs.
+For a client running inside WSL, install Git, Node.js, and npm in that distribution.
+
 ### Claude Code
 
 ```sh

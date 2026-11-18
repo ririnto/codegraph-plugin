@@ -7,14 +7,14 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/exclude.sh\"",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/exclude.sh\"",
             "timeout": 3600,
             "statusMessage": "Configuring CodeGraph exclusion for Git checkout root",
             "async": true
           },
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/init.sh\"",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/init.sh\"",
             "async": true,
             "timeout": 3600,
             "statusMessage": "Initializing CodeGraph at Git checkout root"
@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/init.sh\"",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/init.sh\"",
             "async": true,
             "timeout": 3600,
             "statusMessage": "Initializing CodeGraph at Git checkout root"

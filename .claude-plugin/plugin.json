@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "codegraph-plugin",
-  "version": "2026.11.18.03",
+  "version": "2026.11.18.04",
   "description": "CodeGraph CLI and MCP tools with automatic project initialization, indexing, and local Git exclusion.",
   "author": {
     "name": "ririnto"
@@ -9,8 +9,8 @@
   "license": "MIT",
   "mcpServers": {
     "codegraph": {
-      "command": "npx",
-      "args": ["--yes", "@colbymchenry/codegraph", "serve", "--mcp"],
+      "command": "sh",
+      "args": ["-c", "exec npx --yes @colbymchenry/codegraph serve --mcp"],
       "env": {
         "NODE_USE_SYSTEM_CA": "1"
       },
