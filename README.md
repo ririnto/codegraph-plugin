@@ -1,7 +1,7 @@
 # CodeGraph
 
 Use [CodeGraph](https://github.com/colbymchenry/codegraph) in Claude Code, Codex, or Cursor to find symbols and trace calls in a Git checkout.
-The plugin runs the upstream MCP server through `npx` and initializes the index when a session starts.
+The plugin runs the upstream MCP server through `npx` and initializes the index when a session starts inside a Git worktree.
 
 ## Install
 
