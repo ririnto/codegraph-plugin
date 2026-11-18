@@ -3,8 +3,8 @@
   "mcpServers": {
     "codegraph": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["--yes", "@colbymchenry/codegraph", "serve", "--mcp"],
+      "command": "sh",
+      "args": ["-c", "exec npx --yes @colbymchenry/codegraph serve --mcp"],
       "env": { "NODE_USE_SYSTEM_CA": "1" }
     }
   }
