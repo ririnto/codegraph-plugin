@@ -12,10 +12,10 @@
     "hooks": {
       "sessionStart": [
         {
-          "command": "sh -c 'exec sh ./hooks/exclude.sh \"${CURSOR_PROJECT_DIR-}\"'"
+          "command": "sh -c 'exec sh ./hooks/exclude.sh \"\"\"$CURSOR_PROJECT_DIR\"\"\"'"
         },
         {
-          "command": "sh -c 'exec sh ./hooks/init.sh \"${CURSOR_PROJECT_DIR-}\"'",
+          "command": "sh -c 'exec sh ./hooks/init.sh \"\"\"$CURSOR_PROJECT_DIR\"\"\"'",
           "timeout": 3600
         }
       ]
