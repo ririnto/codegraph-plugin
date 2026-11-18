@@ -1,110 +1,39 @@
----
-description: >-
-  CodeGraph repository initialization and MCP integration for Claude Code and Codex.
-metadata:
-  reference:
-    Claude Code plugin manifests:
-      url: https://code.claude.com/docs/en/plugins/manifest-reference.md
-    Claude Code hooks:
-      url: https://code.claude.com/docs/en/hooks.md
-    Claude Code MCP:
-      url: https://code.claude.com/docs/en/mcp.md#exempt-a-server-from-deferral
-    CodeGraph:
-      version: v1.6.1
-      url:
-        - https://github.com/colbymchenry/codegraph/tree/v1.6.1
-        - https://raw.githubusercontent.com/colbymchenry/codegraph/v1.6.1/src/bin/codegraph.ts
-        - https://raw.githubusercontent.com/colbymchenry/codegraph/v1.6.1/src/sync/worktree.ts
-        - https://raw.githubusercontent.com/colbymchenry/codegraph/v1.6.1/src/mcp/tools.ts
-    OpenAI plugin packaging:
-      url: https://developers.openai.com/plugins/build/plugins.md
-    Agent Plugins:
-      version: 1.0.0
-      url: https://agent-plugins.org/specification.md
-    Codex hooks:
-      url: https://learn.chatgpt.com/docs/hooks.md
-    npm exec:
-      url: https://docs.npmjs.com/cli/v11/commands/npx
-    Node.js system certificates:
-      - version: 22.19.0
-        url: https://nodejs.org/download/release/v22.19.0/docs/api/cli.html#node_use_system_ca1
-      - version: 24.15.0
-        url: https://nodejs.org/download/release/v24.15.0/docs/api/cli.html#node_use_system_ca1
-    Git:
-      url: https://git-scm.com/docs/git-rev-parse
----
-
 # CodeGraph
 
-CodeGraph initializes the active repository when a Claude Code session starts or enters a worktree.
-Codex startup also initializes the active repository.
-The plugin provides CodeGraph as an MCP server for repository-aware tools.
+Use [CodeGraph](https://github.com/colbymchenry/codegraph) in Claude Code or Codex to find symbols and trace calls in a Git checkout.
+The plugin runs the upstream MCP server through `npx` and initializes the index when a session starts.
 
-## Runtime
+## Install
 
-The plugin runs the official CodeGraph package directly through `npx`.
-The runtime requires npm, Git, and a POSIX shell on a platform supported by CodeGraph.
-Use Node.js 22.19 or newer on 22.x, or 24.6 or newer on 24.x.
-The MCP server and preparation hooks set `NODE_USE_SYSTEM_CA=1`, equivalent to the Node.js `--use-system-ca` option.
-This enables system certificates alongside bundled certificates without replacing the caller's `NODE_OPTIONS`.
-On first use, npm prepares CodeGraph automatically with its standard cache and user settings.
-The command uses the unversioned `@colbymchenry/codegraph` package.
-Npm may reuse a project-local installation and otherwise resolves the package from the registry.
-The MCP server and lifecycle hooks use the same `npx` package command.
-Claude Code loads CodeGraph tools upfront through `alwaysLoad: true` in `.claude-plugin/plugin.json`.
-That Claude-specific field is outside the portable MCP schema, so `.codex-plugin/mcp.json` uses the portable schema without that field.
-The preparation handler resolves the Git checkout root and runs `codegraph init --yes` there.
-Initialization builds the first index, and the MCP server then synchronizes changes automatically.
-The lifecycle hooks do not run a separate full index command.
-CodeGraph 1.6.1 supports `init --yes` to skip prompts and select upstream defaults.
-When file watching is unavailable, that default can install Git sync hooks, including in an already initialized repository.
-A separate startup handler configures Git exclusion.
-Both hosts declare a one-hour timeout and a preparation status message.
-Claude Code does not enforce the timeout for asynchronous command hooks.
-At startup, the exclusion handler uses Git to find the info exclude file and adds only `.codegraph` when missing.
-Linked worktrees use their shared Git exclude file.
-The `EnterWorktree` hook runs preparation only.
-Each linked worktree needs its own index to query that branch.
-For an existing MCP connection, pass the worktree root as `projectPath` in tool calls.
-Git exclusion errors do not block the independent asynchronous preparation handler.
-Git lookup failures are logged, and the simplified preparation command can continue in the current directory.
+Use Git, a POSIX shell, and npm with Node.js 22.19+ on 22.x or 24.6+ on 24.x for system certificate support.
 
-## Install And Use
-
-Install the plugin from the sinon marketplace in Claude Code:
+### Claude Code
 
 ```sh
-claude plugin marketplace add ririnto/sinon
-claude plugin install codegraph-plugin@sinon
+claude plugin marketplace add ririnto/codegraph-plugin
+claude plugin install codegraph-plugin@codegraph-plugin
 ```
 
-For local development, load the package in a new session:
+### Codex
 
 ```sh
-claude --plugin-dir .
+codex plugin marketplace add ririnto/codegraph-plugin
+codex plugin add codegraph-plugin@codegraph-plugin
 ```
 
-In Codex, install CodeGraph from the sinon marketplace and trust its startup hook.
-Start a new session after installation.
-Codex uses startup preparation, while Claude Code also prepares a repository after `EnterWorktree`.
+Trust the startup hook in Codex.
+If you already use the `sinon` marketplace, install `codegraph-plugin@sinon` from it instead.
+Start a new session in the repository you want to query.
 
-Run CodeGraph directly in a project:
+## Use the index
 
-```sh
-npx --yes @colbymchenry/codegraph --version
-npx --yes @colbymchenry/codegraph status
-```
+Ask your agent to find a symbol or its callers.
+To check indexing progress from the checkout, run `npx --yes @colbymchenry/codegraph status`.
 
-## Package Contents
+On startup, both hosts run `codegraph init --yes` in the background and add `.codegraph` to Git’s local exclude file.
+The MCP server keeps the index in sync.
+If file watching is unavailable, initialization can install Git sync hooks.
+Claude Code also initializes each linked worktree on entry.
+When querying a worktree through an existing MCP connection, pass its root as `projectPath`.
 
-- `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json` declare the self-marketplace entries.
-- `.claude-plugin/plugin.json` declares the Claude plugin with its inline MCP servers.
-- `.codex-plugin/plugin.json` declares the Codex plugin and its startup hooks.
-- `.codex-plugin/mcp.json` registers the portable MCP server configuration.
-- `hooks/hooks.json` runs repository preparation at Claude Code startup and after `EnterWorktree`.
-- `hooks/codex-hooks.json` runs repository preparation at Codex startup.
-
-## Validation
-
-Run `pnpm install --frozen-lockfile` followed by `pnpm run check` from the repository root.
-The tests exercise the lifecycle hook commands with a stubbed `npx` and temporary Git repositories.
+Report vulnerabilities through [private vulnerability reporting](https://github.com/ririnto/codegraph-plugin/security/advisories/new).
