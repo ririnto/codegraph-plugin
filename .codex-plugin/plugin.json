@@ -1,12 +1,24 @@
 {
   "name": "codegraph-plugin",
-  "version": "2026.11.20",
+  "version": "2026.11.19.01",
   "description": "CodeGraph indexing and MCP access for engineering repositories.",
   "author": {
     "name": "ririnto"
   },
   "license": "MIT",
-  "mcpServers": "./mcp.json",
+  "mcpServers": {
+    "codegraph": {
+      "type": "stdio",
+      "command": "sh",
+      "args": [
+        "-c",
+        "exec npx --yes @colbymchenry/codegraph serve --mcp"
+      ],
+      "env": {
+        "NODE_USE_SYSTEM_CA": "1"
+      }
+    }
+  },
   "homepage": "https://github.com/ririnto/codegraph-plugin",
   "repository": "https://github.com/ririnto/codegraph-plugin"
 }
