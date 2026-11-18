@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "codegraph-plugin",
-  "version": "2026.11.08.01",
+  "version": "2026.11.18.01",
   "description": "CodeGraph CLI and MCP tools with automatic project initialization, indexing, and local Git exclusion.",
   "author": {
     "name": "ririnto"
