@@ -1,7 +1,7 @@
 {
   "name": "codegraph-plugin",
   "displayName": "CodeGraph",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Find symbols and trace calls with automatic Git checkout indexing.",
   "author": {
     "name": "ririnto"

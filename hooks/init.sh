@@ -1,15 +1,14 @@
 #!/usr/bin/env sh
 
-workspace=${1-.}
-if [ -z "$workspace" ]; then
+if [ -z "${1-.}" ]; then
   exit 0
 fi
 
-if [ "$(git -C "$workspace" rev-parse --is-inside-work-tree 2>&1)" != "true" ]; then
+if [ "$(git -C "${1-.}" rev-parse --is-inside-work-tree 2>&1)" != "true" ]; then
   exit 0
 fi
 
-if ! root=$(git -C "$workspace" rev-parse --show-toplevel); then
+if ! root=$(git -C "${1-.}" rev-parse --show-toplevel); then
   exit 1
 fi
 
